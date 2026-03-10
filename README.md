@@ -210,6 +210,7 @@ cd frontend && pnpm install && pnpm dev
 ## 贡献
 
 欢迎提交 Issue 和 PR！自定义 Agent 和数据源开发请参考 [贡献指南](CONTRIBUTING.md)。
+社区交流（Telegram）：[t.me/panwatch](https://t.me/panwatch)
 
 ## License
 
