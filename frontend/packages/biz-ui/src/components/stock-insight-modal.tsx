@@ -1178,27 +1178,27 @@ export default function StockInsightModal(props: {
       <Dialog open={props.open} onOpenChange={props.onOpenChange}>
         <DialogContent className="w-[92vw] max-w-6xl p-5 md:p-6 overflow-x-hidden">
           <DialogHeader className="mb-3">
-            <div className="flex items-start justify-between gap-3 pr-8">
-              <div>
-                <DialogTitle className="flex items-center gap-2">
+            <div className="flex items-start justify-between gap-3 pr-10 md:pr-8">
+              <div className="shrink-0">
+                <DialogTitle className="flex items-center gap-2 flex-wrap">
                   <span className={`text-[10px] px-2 py-0.5 rounded ${badge.style}`}>{badge.label}</span>
-                  <span>{resolvedName}</span>
+                  <span className="break-all">{resolvedName}</span>
                   <span className="font-mono text-[12px] text-muted-foreground">({symbol})</span>
                 </DialogTitle>
-                <DialogDescription>概览、K线、AI建议、新闻、历史分析都在同一弹窗查看</DialogDescription>
+                <DialogDescription className="hidden md:block">概览、K线、AI建议、新闻、历史分析都在同一弹窗查看</DialogDescription>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2">
                 <Button variant="secondary" size="sm" className="h-8 px-2.5" onClick={() => handleExportShareImage()} disabled={imageExporting}>
                   <Download className={`w-3.5 h-3.5 ${imageExporting ? 'animate-pulse' : ''}`} />
-                  <span className="hidden sm:inline">{imageExporting ? '生成中' : '图片'}</span>
+                  <span>{imageExporting ? '生成中' : '图片'}</span>
                 </Button>
                 <Button variant="secondary" size="sm" className="h-8 px-2.5" onClick={() => handleShareInsight()}>
                   <Share2 className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">分享</span>
+                  <span>分享</span>
                 </Button>
                 <Button variant="secondary" size="sm" className="h-8 px-2.5" onClick={() => handleCopyShareText()}>
                   <Copy className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">复制</span>
+                  <span>复制</span>
                 </Button>
                 <Button
                   variant="secondary"
@@ -1218,6 +1218,33 @@ export default function StockInsightModal(props: {
                   <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
                 </Button>
               </div>
+            </div>
+            <div className="flex md:hidden items-center gap-2 mt-2 overflow-x-auto scrollbar-none pb-1 -mb-1">
+              <Button variant="secondary" size="sm" className="h-8 px-2.5 shrink-0" onClick={() => handleExportShareImage()} disabled={imageExporting}>
+                <Download className={`w-3.5 h-3.5 ${imageExporting ? 'animate-pulse' : ''}`} />
+              </Button>
+              <Button variant="secondary" size="sm" className="h-8 px-2.5 shrink-0" onClick={() => handleShareInsight()}>
+                <Share2 className="w-3.5 h-3.5" />
+              </Button>
+              <Button variant="secondary" size="sm" className="h-8 px-2.5 shrink-0" onClick={() => handleCopyShareText()}>
+                <Copy className="w-3.5 h-3.5" />
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="h-8 px-2.5 shrink-0"
+                onClick={toggleWatch}
+                disabled={watchToggleLoading || (hasHolding && !!watchingStock)}
+              >
+                {watchToggleLoading ? '处理中...' : (watchingStock ? (hasHolding ? '持仓中' : '取消关注') : '快速关注')}
+              </Button>
+              <StockPriceAlertPanel mode="inline" symbol={symbol} market={market} stockName={resolvedName} />
+              <Button variant="secondary" size="sm" className="h-8 px-2.5 shrink-0" onClick={handleSetAlert} disabled={alerting}>
+                {alerting ? '设置中...' : '一键设提醒'}
+              </Button>
+              <Button variant="outline" size="sm" className="h-8 px-2.5 shrink-0" onClick={() => handleRefreshAll()} disabled={loading}>
+                <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+              </Button>
             </div>
           </DialogHeader>
 
