@@ -1,7 +1,7 @@
 """账户和持仓管理 API"""
 import logging
 import time
-import httpx
+from src.core.http_client import sync_get
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func
 from sqlalchemy.orm import Session
@@ -31,7 +31,7 @@ def get_hkd_cny_rate() -> float:
 
     # 从新浪财经获取汇率
     try:
-        resp = httpx.get(
+        resp = sync_get(
             "https://hq.sinajs.cn/list=fx_shkdcny",
             timeout=5,
             headers={
@@ -65,7 +65,7 @@ def get_usd_cny_rate() -> float:
 
     # 从新浪财经获取汇率
     try:
-        resp = httpx.get(
+        resp = sync_get(
             "https://hq.sinajs.cn/list=fx_susdcny",
             timeout=5,
             headers={

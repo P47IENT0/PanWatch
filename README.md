@@ -78,9 +78,10 @@ Telegram / 企业微信 / 钉钉 / 飞书 / Bark / 自定义 Webhook
 ## 快速开始
 
 ```bash
-docker run -d \
+sudo docker run -d \
   --name panwatch \
   -p 8000:8000 \
+  --env-file "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/.env" \
   -v panwatch_data:/app/data \
   sunxiao0721/panwatch:latest
 ```
@@ -127,6 +128,19 @@ docker-compose up -d
 | `DATA_DIR` | 数据存储目录 | `./data` |
 | `TZ` | 应用时区（影响 Agent 调度触发时间与时间展示） | `Asia/Shanghai` |
 | `PLAYWRIGHT_SKIP_BROWSER_INSTALL` | 跳过首次 Chromium 安装（不需要截图时可用） | 未设置 |
+| `PANWATCH_AI_SERVICES_JSON` | 多服务商/模型 JSON（启动时同步到数据库） | 未设置 |
+| `PANWATCH_AI_AGENT_MODEL_MAP_JSON` | Agent 到模型映射 JSON（启动时同步） | 未设置 |
+| `PANWATCH_AI_DEFAULT_MODEL` | 默认模型（可写 `模型名` 或 `服务名/模型名`） | 未设置 |
+
+示例（单行 JSON，建议放在 `.env`）：
+
+```bash
+PANWATCH_AI_SERVICES_JSON=[{"name":"CodeYY OpenAI Group","base_url":"https://codeyy.top/v1","api_key":"sk-xxx","models":[{"name":"GPT-5.2","model":"gpt-5.2-codex-xhigh"},{"name":"GPT-4o","model":"gpt-4o"},{"name":"GPT-4o Mini","model":"gpt-4o-mini"}]},{"name":"CodeYY Gemini","base_url":"https://codeyy.top/v1beta","api_key":"sk-yyy","models":[{"name":"Gemini 3 Pro","model":"gemini-3-pro-preview"},{"name":"Gemini 3 Flash","model":"gemini-3-flash-preview"}]},{"name":"CodeYY Claude","base_url":"https://codeyy.top/v1","api_key":"sk-zzz","models":[{"name":"Claude Sonnet 4.5","model":"claude-sonnet-4-5-20250929"}]}]
+PANWATCH_AI_AGENT_MODEL_MAP_JSON={"premarket_outlook":"gpt-5.2-codex-xhigh","intraday_monitor":"gpt-4o-mini","daily_report":"gpt-4o","news_digest":"gemini-3-flash-preview","chart_analyst":"gemini-3-pro-preview"}
+PANWATCH_AI_DEFAULT_MODEL=gpt-4o
+```
+
+说明：启动时会自动 upsert 服务商、模型和 Agent 绑定；你也可以继续在 UI 的「设置 → AI 服务商 / AI 模型 / Agent」里修改，后续重启会再次按 `.env` 同步。
 
 </details>
 

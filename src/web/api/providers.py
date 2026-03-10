@@ -176,16 +176,16 @@ async def test_model(model_id: int, db: Session = Depends(get_db)):
         raise HTTPException(400, "关联的服务商不存在")
 
     try:
-        client = AIClient(
+        async with AIClient(
             base_url=service.base_url,
             api_key=service.api_key,
             model=model.model,
-        )
-        reply = await client.chat(
-            system_prompt="You are a helpful assistant.",
-            user_content="Say 'OK' in one word.",
-            temperature=0,
-        )
+        ) as client:
+            reply = await client.chat(
+                system_prompt="You are a helpful assistant.",
+                user_content="Say 'OK' in one word.",
+                temperature=0,
+            )
         return {"ok": True, "reply": reply.strip()}
     except Exception as e:
         raise HTTPException(400, f"测试失败: {e}")

@@ -8,8 +8,10 @@ from functools import lru_cache
 import asyncio
 
 import httpx
+from typing import cast
 
 from src.core.cn_symbol import get_cn_prefix
+from src.core.http_client import async_client
 
 logger = logging.getLogger(__name__)
 
@@ -109,7 +111,7 @@ class XueqiuNewsCollector(BaseNewsCollector):
         if self.cookies:
             headers["Cookie"] = self.cookies
 
-        async with httpx.AsyncClient(timeout=8, headers=headers) as client:
+        async with async_client(timeout=8, headers=headers) as client:
             tasks = [self._fetch_for_symbol(client, symbol, since) for symbol in a_share_symbols]
             results = await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -238,7 +240,7 @@ class EastMoneyStockNewsCollector(BaseNewsCollector):
             db = SessionLocal()
             try:
                 stocks = db.query(Stock).filter(Stock.symbol.in_(symbols)).all()
-                return {s.symbol: s.name for s in stocks}
+                return {cast(str, s.symbol): cast(str, s.name) for s in stocks}
             finally:
                 db.close()
         except Exception as e:
@@ -284,7 +286,7 @@ class EastMoneyStockNewsCollector(BaseNewsCollector):
             "Referer": "https://so.eastmoney.com/",
             "Accept": "*/*",
         }
-        async with httpx.AsyncClient(timeout=8, verify=False, headers=headers) as client:
+        async with async_client(timeout=8, verify=False, headers=headers) as client:
             tasks = [
                 fetch_with_limit(client, symbol, symbol_names.get(symbol, symbol))
                 for symbol in symbols
@@ -468,7 +470,7 @@ class EastMoneyNewsCollector(BaseNewsCollector):
         }
 
         try:
-            async with httpx.AsyncClient(timeout=5, verify=False) as client:
+            async with async_client(timeout=5, verify=False) as client:
                 resp = await client.get(self.API_URL, params=params)
                 resp.raise_for_status()
                 data = resp.json()
@@ -587,7 +589,7 @@ class NewsCollector:
             )
 
             for ds in data_sources:
-                factory = cls.COLLECTOR_MAP.get(ds.provider)
+                factory = cls.COLLECTOR_MAP.get(cast(str, ds.provider))
                 if factory:
                     try:
                         collector = factory(ds.config or {})

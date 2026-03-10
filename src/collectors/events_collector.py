@@ -1,7 +1,7 @@
 import logging
-import logging
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from typing import cast
 
 import httpx
 
@@ -29,20 +29,6 @@ class EastMoneyEventsCollector:
 
     source = "eastmoney"
     API_URL = "https://np-anotice-stock.eastmoney.com/api/security/ann"
-
-    def __init__(
-        self,
-        *,
-        timeout_s: float = 10.0,
-        verify_ssl: bool = False,
-        retries: int = 1,
-        backoff_s: float = 0.6,
-    ):
-        self.timeout_s = float(timeout_s)
-        self.verify_ssl = bool(verify_ssl)
-        self.retries = int(retries)
-        self.backoff_s = float(backoff_s)
-        self.last_error: str | None = None
 
     def __init__(
         self,
@@ -111,13 +97,12 @@ class EastMoneyEventsCollector:
                         self.timeout_s,
                         connect=max(0.1, float(self.connect_timeout_s)),
                     )
-                async with httpx.AsyncClient(
+                async with async_client(
                     timeout=timeout,
                     verify=self.verify_ssl,
                     headers=headers,
                     follow_redirects=True,
-                    trust_env=True,
-                    proxy=self.proxy,
+                    proxy=resolve_proxy(self.proxy),
                 ) as client:
                     resp = await client.get(self.API_URL, params=params)
                     resp.raise_for_status()
@@ -316,7 +301,8 @@ class EventsCollector:
                 .all()
             )
             for ds in data_sources:
-                factory = cls.COLLECTOR_MAP.get(ds.provider)
+                provider = cast(str, ds.provider)
+                factory = cls.COLLECTOR_MAP.get(provider)
                 if not factory:
                     continue
                 try:
@@ -362,3 +348,4 @@ class EventsCollector:
             seen.add(key)
             uniq.append(it)
         return uniq
+from src.core.http_client import async_client, resolve_proxy

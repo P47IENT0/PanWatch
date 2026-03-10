@@ -228,6 +228,25 @@ class AppSettings(Base):
     description = Column(String, default="")
 
 
+class TradingGateway(Base):
+    __tablename__ = "trading_gateways"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=False)
+    broker_type = Column(String, default="ths")
+    gateway_url = Column(String, nullable=False)
+    api_key = Column(String, default="")
+    enabled = Column(Boolean, default=True)
+    panwatch_account_id = Column(
+        Integer, ForeignKey("accounts.id", ondelete="SET NULL"), nullable=True
+    )
+    broker_account_id = Column(String, default="")
+    last_synced_at = Column(DateTime, nullable=True)
+    last_error = Column(String, default="")
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
+
 class DataSource(Base):
     """数据源配置（新闻、K线图、行情）"""
 

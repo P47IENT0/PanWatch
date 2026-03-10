@@ -1,0 +1,1241 @@
+INFO:     Will watch for changes in these directories: ['/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+WARNING:  --reload-include and --reload-exclude have no effect unless watchfiles is installed.
+INFO:     Started reloader process [293465] using StatReload
+盯盘侠启动: http://127.0.0.1:8000
+API 文档: http://127.0.0.1:8000/docs
+INFO:     Started server process [293484]
+INFO:     Waiting for application startup.
+19:02:59 INFO  [server] 本地开发环境，使用系统 Playwright
+19:02:59 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:02:59 INFO  [server] 策略目录初始化完成
+19:02:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:02:59 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:02:59 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:02:59 INFO  [apscheduler.scheduler] Scheduler started
+19:02:59 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:02:59 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:02:59 INFO  [server] Agent 调度器已启动
+19:02:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:02:59 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:02:59 INFO  [apscheduler.scheduler] Scheduler started
+19:02:59 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:02:59 INFO  [server] 价格提醒调度器已启动
+19:02:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:02:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:02:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:02:59 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:02:59 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:02:59 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:02:59 INFO  [apscheduler.scheduler] Scheduler started
+19:02:59 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:02:59 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+INFO:     127.0.0.1:59530 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59536 - "GET / HTTP/1.1" 200 OK
+19:03:14 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:03:14 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:03:14 CST], next run at: 2026-02-26 19:03:14 CST)" (scheduled at 2026-02-26 19:03:14.831835+08:00)
+19:03:14 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:03:14 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:03:14 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:03:14 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:03:14 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:03:14 CST], next run at: 2026-02-26 19:03:14 CST)" executed successfully
+19:03:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:04:59 CST)" (scheduled at 2026-02-26 19:03:59.830367+08:00)
+19:03:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:03:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:04:59 CST)" executed successfully
+19:04:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:05:59 CST)" (scheduled at 2026-02-26 19:04:59.830367+08:00)
+19:04:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:04:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:05:59 CST)" executed successfully
+19:05:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:06:59 CST)" (scheduled at 2026-02-26 19:05:59.830367+08:00)
+19:05:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:05:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:06:59 CST)" executed successfully
+19:06:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:07:59 CST)" (scheduled at 2026-02-26 19:06:59.830367+08:00)
+19:06:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:06:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:07:59 CST)" executed successfully
+19:07:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:08:59 CST)" (scheduled at 2026-02-26 19:07:59.830367+08:00)
+19:07:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:07:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:08:59 CST)" executed successfully
+19:08:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:09:59 CST)" (scheduled at 2026-02-26 19:08:59.830367+08:00)
+19:08:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:08:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:09:59 CST)" executed successfully
+19:09:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:10:59 CST)" (scheduled at 2026-02-26 19:09:59.830367+08:00)
+19:09:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:09:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:10:59 CST)" executed successfully
+19:10:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:11:59 CST)" (scheduled at 2026-02-26 19:10:59.830367+08:00)
+19:10:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:10:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:11:59 CST)" executed successfully
+19:11:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:12:59 CST)" (scheduled at 2026-02-26 19:11:59.830367+08:00)
+19:11:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:11:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:12:59 CST)" executed successfully
+19:12:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:13:59 CST)" (scheduled at 2026-02-26 19:12:59.830367+08:00)
+19:12:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:12:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:13:59 CST)" executed successfully
+19:13:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:14:59 CST)" (scheduled at 2026-02-26 19:13:59.830367+08:00)
+19:13:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:13:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:14:59 CST)" executed successfully
+19:14:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:15:59 CST)" (scheduled at 2026-02-26 19:14:59.830367+08:00)
+19:14:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:14:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:15:59 CST)" executed successfully
+19:15:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:16:59 CST)" (scheduled at 2026-02-26 19:15:59.830367+08:00)
+19:15:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:15:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:16:59 CST)" executed successfully
+INFO:     127.0.0.1:40570 - "GET /api/version HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40578 - "GET /api/auth/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40594 - "GET /api/version HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40606 - "GET /api/auth/status HTTP/1.1" 200 OK
+19:16:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:17:59 CST)" (scheduled at 2026-02-26 19:16:59.830367+08:00)
+19:16:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:16:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:17:59 CST)" executed successfully
+INFO:     127.0.0.1:54108 - "POST /api/auth/setup HTTP/1.1" 200 OK
+19:17:16 ERROR [src.web.api.market] 获取市场指数失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:54118 - "GET /api/market/indices HTTP/1.1" 200 OK
+19:17:16 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:16 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:54122 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54138 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54152 - "GET /api/history?agent_name=daily_report&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54156 - "GET /api/history?agent_name=premarket_outlook&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54148 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54170 - "GET /api/history?agent_name=news_digest&kind=all&limit=1 HTTP/1.1" 200 OK
+19:17:16 ERROR [src.web.api.market] 获取市场指数失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:54194 - "GET /api/market/indices HTTP/1.1" 200 OK
+19:17:16 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:16 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:54216 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54210 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54226 - "GET /api/history?agent_name=daily_report&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54238 - "GET /api/history?agent_name=premarket_outlook&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54244 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54258 - "GET /api/history?agent_name=news_digest&kind=all&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "POST /api/agents/intraday/scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54272 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54282 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54296 - "POST /api/agents/intraday/scan?analyze=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54312 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+19:17:17 INFO  [httpx] HTTP Request: GET https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=12&po=1&np=1&fltt=2&invt=2&fid=f3&fs=m%3A90%2Bt%3A2&fields=f12%2Cf14%2Cf2%2Cf3%2Cf4%2Cf6 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:54176 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54328 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+19:17:17 INFO  [httpx] HTTP Request: GET https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=20&po=1&np=1&fltt=2&invt=2&fid=f3&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf5 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:54356 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54344 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54184 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54366 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54380 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54382 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+19:17:17 INFO  [httpx] HTTP Request: GET https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=20&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf5 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:54178 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54384 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54398 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54402 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36780 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36808 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36818 - "GET /api/settings/version HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36826 - "GET /api/agents/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36836 - "GET /api/feedback/stats?days=14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36796 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36788 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36838 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36846 - "GET /api/settings/version HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36858 - "GET /api/agents/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36862 - "GET /api/feedback/stats?days=14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36874 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36884 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36892 - "POST /api/providers/models/2/test HTTP/1.1" 400 Bad Request
+19:17:26 ERROR [asyncio] Task exception was never retrieved
+future: <Task finished name='Task-125' coro=<AsyncClient.aclose() done, defined at /home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py:1978> exception=AttributeError("'AsyncHttpxClientWrapper' object has no attribute '_transport'")>
+Traceback (most recent call last):
+  File "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'AsyncHttpxClientWrapper' object has no attribute '_transport'
+INFO:     127.0.0.1:39446 - "POST /api/providers/models/3/test HTTP/1.1" 400 Bad Request
+19:17:39 ERROR [asyncio] Task exception was never retrieved
+future: <Task finished name='Task-128' coro=<AsyncClient.aclose() done, defined at /home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py:1978> exception=AttributeError("'AsyncHttpxClientWrapper' object has no attribute '_transport'")>
+Traceback (most recent call last):
+  File "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'AsyncHttpxClientWrapper' object has no attribute '_transport'
+INFO:     127.0.0.1:39456 - "POST /api/providers/models/1/test HTTP/1.1" 400 Bad Request
+19:17:40 ERROR [asyncio] Task exception was never retrieved
+future: <Task finished name='Task-131' coro=<AsyncClient.aclose() done, defined at /home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py:1978> exception=AttributeError("'AsyncHttpxClientWrapper' object has no attribute '_transport'")>
+Traceback (most recent call last):
+  File "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'AsyncHttpxClientWrapper' object has no attribute '_transport'
+INFO:     127.0.0.1:39464 - "POST /api/providers/models/4/test HTTP/1.1" 400 Bad Request
+19:17:45 ERROR [asyncio] Task exception was never retrieved
+future: <Task finished name='Task-134' coro=<AsyncClient.aclose() done, defined at /home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py:1978> exception=AttributeError("'AsyncHttpxClientWrapper' object has no attribute '_transport'")>
+Traceback (most recent call last):
+  File "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'AsyncHttpxClientWrapper' object has no attribute '_transport'
+INFO:     127.0.0.1:39480 - "POST /api/providers/models/5/test HTTP/1.1" 400 Bad Request
+19:17:46 ERROR [asyncio] Task exception was never retrieved
+future: <Task finished name='Task-137' coro=<AsyncClient.aclose() done, defined at /home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py:1978> exception=AttributeError("'AsyncHttpxClientWrapper' object has no attribute '_transport'")>
+Traceback (most recent call last):
+  File "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'AsyncHttpxClientWrapper' object has no attribute '_transport'
+INFO:     127.0.0.1:59090 - "GET /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59074 - "GET /api/stocks HTTP/1.1" 200 OK
+19:17:52 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:52 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59122 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59134 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59106 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59146 - "GET /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59152 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59168 - "GET /api/providers/services HTTP/1.1" 200 OK
+19:17:52 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:52 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59164 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59184 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59192 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59198 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59212 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+19:17:52 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:52 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59224 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59234 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+19:17:52 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:52 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:52 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59278 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59280 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59290 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59300 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59308 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59320 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59336 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59344 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59346 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59352 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+19:17:53 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:54 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59242 - "GET /api/klines/600519/summary?market=CN HTTP/1.1" 200 OK
+19:17:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59252 - "GET /api/klines/002594/summary?market=CN HTTP/1.1" 200 OK
+19:17:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59256 - "GET /api/klines/300750/summary?market=CN HTTP/1.1" 200 OK
+19:17:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59272 - "GET /api/klines/00700/summary?market=HK HTTP/1.1" 200 OK
+19:17:55 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:17:55 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59358 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59384 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59368 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59400 - "GET /api/agents/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59380 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59416 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59432 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59448 - "GET /api/agents/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59434 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59456 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59466 - "GET /api/agents/premarket_outlook/schedule/preview?count=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59482 - "GET /api/agents/daily_report/schedule/preview?count=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59472 - "GET /api/agents/intraday_monitor/schedule/preview?count=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59490 - "GET /api/agents/premarket_outlook/schedule/preview?count=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59498 - "GET /api/agents/daily_report/schedule/preview?count=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59510 - "GET /api/agents/intraday_monitor/schedule/preview?count=3 HTTP/1.1" 200 OK
+19:17:57 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:59276 - "GET /api/klines/AAPL/summary?market=US HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38006 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37992 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37996 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38020 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38026 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38042 - "GET /api/stocks HTTP/1.1" 200 OK
+19:17:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:18:59 CST)" (scheduled at 2026-02-26 19:17:59.830367+08:00)
+19:17:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:17:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:18:59 CST)" executed successfully
+19:18:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:19:59 CST)" (scheduled at 2026-02-26 19:18:59.830367+08:00)
+19:18:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:18:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:19:59 CST)" executed successfully
+19:19:19 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:19 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53112 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53106 - "GET /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53114 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53128 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53100 - "GET /api/stocks HTTP/1.1" 200 OK
+19:19:19 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:19 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53152 - "GET /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53142 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53166 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53182 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53194 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53204 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53208 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53230 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53220 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53216 - "GET /api/providers/services HTTP/1.1" 200 OK
+19:19:19 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:19 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53238 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+19:19:19 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:19 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:19 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53290 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53292 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53304 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53316 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53322 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+19:19:20 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:20 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:21 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53244 - "GET /api/klines/600519/summary?market=CN HTTP/1.1" 200 OK
+19:19:21 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53250 - "GET /api/klines/002594/summary?market=CN HTTP/1.1" 200 OK
+19:19:21 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53252 - "GET /api/klines/300750/summary?market=CN HTTP/1.1" 200 OK
+19:19:21 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53258 - "GET /api/klines/00700/summary?market=HK HTTP/1.1" 200 OK
+19:19:21 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:21 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:24 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:53274 - "GET /api/klines/AAPL/summary?market=US HTTP/1.1" 200 OK
+19:19:31 INFO  [src.web.api.accounts] 创建账户: 银河证券
+INFO:     127.0.0.1:52254 - "POST /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52270 - "GET /api/accounts HTTP/1.1" 200 OK
+19:19:31 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:31 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52284 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52258 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52290 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52302 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52314 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52316 - "GET /api/channels HTTP/1.1" 200 OK
+19:19:31 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:31 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52322 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+19:19:31 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:31 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:31 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52384 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+19:19:32 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:32 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:33 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52332 - "GET /api/klines/600519/summary?market=CN HTTP/1.1" 200 OK
+19:19:33 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52340 - "GET /api/klines/002594/summary?market=CN HTTP/1.1" 200 OK
+19:19:33 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52362 - "GET /api/klines/00700/summary?market=HK HTTP/1.1" 200 OK
+19:19:33 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52346 - "GET /api/klines/300750/summary?market=CN HTTP/1.1" 200 OK
+19:19:33 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:33 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:35 INFO  [src.web.api.accounts] 删除账户: 默认账户
+INFO:     127.0.0.1:52400 - "DELETE /api/accounts/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52418 - "GET /api/accounts HTTP/1.1" 200 OK
+19:19:35 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:35 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52420 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52404 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52432 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52428 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52456 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52434 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52442 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52466 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+19:19:36 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:52374 - "GET /api/klines/AAPL/summary?market=US HTTP/1.1" 200 OK
+19:19:49 ERROR [src.web.api.market] 获取市场指数失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39212 - "GET /api/market/indices HTTP/1.1" 200 OK
+19:19:49 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:49 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39216 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39228 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39240 - "GET /api/history?agent_name=daily_report&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39248 - "GET /api/history?agent_name=premarket_outlook&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39258 - "GET /api/history?agent_name=news_digest&kind=all&limit=1 HTTP/1.1" 200 OK
+19:19:50 ERROR [src.web.api.market] 获取市场指数失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39310 - "GET /api/market/indices HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39238 - "GET /api/stocks HTTP/1.1" 200 OK
+19:19:50 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:50 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39316 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39338 - "GET /api/history?agent_name=news_digest&kind=all&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39322 - "GET /api/history?agent_name=daily_report&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39332 - "GET /api/history?agent_name=premarket_outlook&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39318 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39340 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39346 - "POST /api/agents/intraday/scan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39360 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39368 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39380 - "POST /api/agents/intraday/scan?analyze=true HTTP/1.1" 200 OK
+19:19:50 INFO  [httpx] HTTP Request: GET https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=12&po=1&np=1&fltt=2&invt=2&fid=f3&fs=m%3A90%2Bt%3A2&fields=f12%2Cf14%2Cf2%2Cf3%2Cf4%2Cf6 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:39272 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39400 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39384 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39406 - "GET /api/discovery/boards?market=CN&mode=gainers&limit=12 HTTP/1.1" 200 OK
+19:19:50 INFO  [httpx] HTTP Request: GET https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=20&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf5 "HTTP/1.1 200 OK"
+19:19:50 INFO  [httpx] HTTP Request: GET https://push2.eastmoney.com/api/qt/clist/get?pn=1&pz=20&po=1&np=1&fltt=2&invt=2&fid=f3&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf5 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:39288 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39300 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39432 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39416 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39448 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39456 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39470 - "GET /api/discovery/stocks?market=CN&mode=gainers&limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39486 - "GET /api/discovery/stocks?market=CN&mode=turnover&limit=20 HTTP/1.1" 200 OK
+19:19:53 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:53 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39498 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39512 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39514 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39500 - "GET /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39490 - "GET /api/stocks HTTP/1.1" 200 OK
+19:19:53 WARNING [src.web.api.accounts] 获取港币汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:53 WARNING [src.web.api.accounts] 获取美元汇率失败，使用缓存: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39528 - "GET /api/portfolio/summary?include_quotes=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39532 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39542 - "GET /api/price-alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39544 - "GET /api/accounts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39554 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39548 - "GET /api/stocks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39562 - "GET /api/suggestions?include_expired=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39600 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39578 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39586 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39602 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39604 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+19:19:53 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:53 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:53 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:53 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:53 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39668 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39682 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39692 - "GET /api/agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39706 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39720 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39736 - "POST /api/quotes/batch HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39744 - "GET /api/stocks/markets/status HTTP/1.1" 200 OK
+19:19:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 ERROR [src.collectors.kline_collector] 获取 002594 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 ERROR [src.collectors.kline_collector] 获取 600519 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 ERROR [src.collectors.kline_collector] 获取 300750 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:54 ERROR [src.collectors.kline_collector] 获取 00700 K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 002594 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39630 - "GET /api/klines/002594/summary?market=CN HTTP/1.1" 200 OK
+19:19:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 600519 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39618 - "GET /api/klines/600519/summary?market=CN HTTP/1.1" 200 OK
+19:19:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 300750 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39640 - "GET /api/klines/300750/summary?market=CN HTTP/1.1" 200 OK
+19:19:55 WARNING [src.collectors.kline_collector] Eastmoney 获取 00700 K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39650 - "GET /api/klines/00700/summary?market=HK HTTP/1.1" 200 OK
+19:19:55 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:55 ERROR [src.collectors.kline_collector] 获取 AAPL K线数据失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+19:19:58 WARNING [src.collectors.kline_collector] Stooq 获取 AAPL K线失败: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/')
+INFO:     127.0.0.1:39664 - "GET /api/klines/AAPL/summary?market=US HTTP/1.1" 200 OK
+19:19:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:20:59 CST)" (scheduled at 2026-02-26 19:19:59.830367+08:00)
+19:19:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:19:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:20:59 CST)" executed successfully
+INFO:     127.0.0.1:60074 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60088 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60094 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60116 - "GET /api/agents/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60130 - "GET /api/feedback/stats?days=14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60108 - "GET /api/settings/version HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60156 - "GET /api/channels HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60144 - "GET /api/providers/services HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60176 - "GET /api/feedback/stats?days=14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60174 - "GET /api/agents/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60178 - "GET /api/settings/version HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60194 - "POST /api/providers/models/1/test HTTP/1.1" 400 Bad Request
+19:20:16 ERROR [asyncio] Task exception was never retrieved
+future: <Task finished name='Task-498' coro=<AsyncClient.aclose() done, defined at /home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py:1978> exception=AttributeError("'AsyncHttpxClientWrapper' object has no attribute '_transport'")>
+Traceback (most recent call last):
+  File "/home/lzhang/Documents/Knowledge_OS/03_work/Investment/PanWatch/venv/lib/python3.12/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+          ^^^^^^^^^^^^^^^
+AttributeError: 'AsyncHttpxClientWrapper' object has no attribute '_transport'
+19:20:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:21:59 CST)" (scheduled at 2026-02-26 19:20:59.830367+08:00)
+19:20:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:20:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:21:59 CST)" executed successfully
+19:21:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:22:59 CST)" (scheduled at 2026-02-26 19:21:59.830367+08:00)
+19:21:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:21:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:22:59 CST)" executed successfully
+19:22:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:23:59 CST)" (scheduled at 2026-02-26 19:22:59.830367+08:00)
+19:22:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:22:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:23:59 CST)" executed successfully
+19:23:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:24:59 CST)" (scheduled at 2026-02-26 19:23:59.830367+08:00)
+19:23:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:23:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:24:59 CST)" executed successfully
+INFO:     127.0.0.1:34432 - "GET /api/providers/models HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34436 - "POST /api/providers/models/1/test HTTP/1.1" 401 Unauthorized
+19:24:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:25:59 CST)" (scheduled at 2026-02-26 19:24:59.830367+08:00)
+19:24:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:24:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:25:59 CST)" executed successfully
+19:25:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:26:59 CST)" (scheduled at 2026-02-26 19:25:59.830367+08:00)
+19:25:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:25:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:26:59 CST)" executed successfully
+19:26:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:27:59 CST)" (scheduled at 2026-02-26 19:26:59.830367+08:00)
+19:26:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:26:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:27:59 CST)" executed successfully
+19:27:59 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:28:59 CST)" (scheduled at 2026-02-26 19:27:59.830367+08:00)
+19:27:59 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:27:59 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:28:59 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/web/api/accounts.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:28:25 INFO  [src.core.scheduler] 调度器已关闭
+19:28:25 INFO  [server] Agent 调度器已关闭
+19:28:25 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:28:25 INFO  [server] 价格提醒调度器已关闭
+19:28:25 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:28:25 INFO  [server] 上下文维护调度器已关闭
+19:28:25 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:28:25 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:28:25 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [293484]
+INFO:     Started server process [326002]
+INFO:     Waiting for application startup.
+19:28:26 INFO  [server] 本地开发环境，使用系统 Playwright
+19:28:26 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:28:26 INFO  [server] 策略目录初始化完成
+19:28:26 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:28:26 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:28:26 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:28:26 INFO  [apscheduler.scheduler] Scheduler started
+19:28:26 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:28:26 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:28:26 INFO  [server] Agent 调度器已启动
+19:28:26 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:28:26 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:28:26 INFO  [apscheduler.scheduler] Scheduler started
+19:28:26 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:28:26 INFO  [server] 价格提醒调度器已启动
+19:28:26 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:28:26 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:28:26 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:28:26 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:28:26 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:28:26 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:28:26 INFO  [apscheduler.scheduler] Scheduler started
+19:28:26 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:28:26 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:28:41 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:28:41 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:28:41 CST], next run at: 2026-02-26 19:28:41 CST)" (scheduled at 2026-02-26 19:28:41.708149+08:00)
+19:28:41 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:28:41 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:28:41 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:28:41 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:28:41 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:28:41 CST], next run at: 2026-02-26 19:28:41 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/collectors/akshare_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:28:58 INFO  [src.core.scheduler] 调度器已关闭
+19:28:58 INFO  [server] Agent 调度器已关闭
+19:28:58 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:28:58 INFO  [server] 价格提醒调度器已关闭
+19:28:58 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:28:58 INFO  [server] 上下文维护调度器已关闭
+19:28:58 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:28:58 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:28:58 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [326002]
+INFO:     Started server process [326977]
+INFO:     Waiting for application startup.
+19:29:00 INFO  [server] 本地开发环境，使用系统 Playwright
+19:29:00 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:29:00 INFO  [server] 策略目录初始化完成
+19:29:00 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:00 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:29:00 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:29:00 INFO  [apscheduler.scheduler] Scheduler started
+19:29:00 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:29:00 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:29:00 INFO  [server] Agent 调度器已启动
+19:29:00 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:00 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:29:00 INFO  [apscheduler.scheduler] Scheduler started
+19:29:00 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:29:00 INFO  [server] 价格提醒调度器已启动
+19:29:00 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:00 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:00 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:00 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:29:00 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:29:00 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:29:00 INFO  [apscheduler.scheduler] Scheduler started
+19:29:00 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:29:00 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/collectors/capital_flow_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:29:08 INFO  [src.core.scheduler] 调度器已关闭
+19:29:08 INFO  [server] Agent 调度器已关闭
+19:29:08 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:29:08 INFO  [server] 价格提醒调度器已关闭
+19:29:08 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:29:08 INFO  [server] 上下文维护调度器已关闭
+19:29:08 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:29:08 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:29:08 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [326977]
+INFO:     Started server process [327323]
+INFO:     Waiting for application startup.
+19:29:09 INFO  [server] 本地开发环境，使用系统 Playwright
+19:29:10 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:29:10 INFO  [server] 策略目录初始化完成
+19:29:10 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:10 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:29:10 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:29:10 INFO  [apscheduler.scheduler] Scheduler started
+19:29:10 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:29:10 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:29:10 INFO  [server] Agent 调度器已启动
+19:29:10 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:10 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:29:10 INFO  [apscheduler.scheduler] Scheduler started
+19:29:10 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:29:10 INFO  [server] 价格提醒调度器已启动
+19:29:10 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:10 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:10 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:10 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:29:10 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:29:10 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:29:10 INFO  [apscheduler.scheduler] Scheduler started
+19:29:10 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:29:10 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/web/stock_list.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:29:22 INFO  [src.core.scheduler] 调度器已关闭
+19:29:22 INFO  [server] Agent 调度器已关闭
+19:29:22 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:29:22 INFO  [server] 价格提醒调度器已关闭
+19:29:22 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:29:22 INFO  [server] 上下文维护调度器已关闭
+19:29:22 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:29:22 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:29:22 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [327323]
+INFO:     Started server process [327705]
+INFO:     Waiting for application startup.
+19:29:23 INFO  [server] 本地开发环境，使用系统 Playwright
+19:29:23 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:29:23 INFO  [server] 策略目录初始化完成
+19:29:23 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:23 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:29:23 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:29:23 INFO  [apscheduler.scheduler] Scheduler started
+19:29:23 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:29:23 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:29:23 INFO  [server] Agent 调度器已启动
+19:29:23 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:23 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:29:23 INFO  [apscheduler.scheduler] Scheduler started
+19:29:23 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:29:23 INFO  [server] 价格提醒调度器已启动
+19:29:23 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:23 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:23 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:29:23 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:29:23 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:29:23 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:29:23 INFO  [apscheduler.scheduler] Scheduler started
+19:29:23 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:29:23 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:29:38 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:29:38 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:29:38 CST], next run at: 2026-02-26 19:29:38 CST)" (scheduled at 2026-02-26 19:29:38.728179+08:00)
+19:29:38 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:29:38 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:29:38 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:29:38 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:29:38 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:29:38 CST], next run at: 2026-02-26 19:29:38 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/collectors/kline_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:30:02 INFO  [src.core.scheduler] 调度器已关闭
+19:30:02 INFO  [server] Agent 调度器已关闭
+19:30:02 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:30:02 INFO  [server] 价格提醒调度器已关闭
+19:30:02 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:30:02 INFO  [server] 上下文维护调度器已关闭
+19:30:02 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:30:02 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:30:02 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [327705]
+INFO:     Started server process [329668]
+INFO:     Waiting for application startup.
+19:30:04 INFO  [server] 本地开发环境，使用系统 Playwright
+19:30:04 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:30:04 INFO  [server] 策略目录初始化完成
+19:30:04 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:04 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:30:04 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:30:04 INFO  [apscheduler.scheduler] Scheduler started
+19:30:04 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:30:04 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:30:04 INFO  [server] Agent 调度器已启动
+19:30:04 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:04 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:30:04 INFO  [apscheduler.scheduler] Scheduler started
+19:30:04 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:30:04 INFO  [server] 价格提醒调度器已启动
+19:30:04 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:04 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:04 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:04 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:30:04 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:30:04 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:30:04 INFO  [apscheduler.scheduler] Scheduler started
+19:30:04 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:30:04 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/collectors/discovery_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:30:17 INFO  [src.core.scheduler] 调度器已关闭
+19:30:17 INFO  [server] Agent 调度器已关闭
+19:30:17 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:30:17 INFO  [server] 价格提醒调度器已关闭
+19:30:17 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:30:17 INFO  [server] 上下文维护调度器已关闭
+19:30:17 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:30:17 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:30:17 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [329668]
+INFO:     Started server process [330175]
+INFO:     Waiting for application startup.
+19:30:18 INFO  [server] 本地开发环境，使用系统 Playwright
+19:30:18 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:30:18 INFO  [server] 策略目录初始化完成
+19:30:18 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:18 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:30:18 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:30:18 INFO  [apscheduler.scheduler] Scheduler started
+19:30:18 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:30:18 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:30:18 INFO  [server] Agent 调度器已启动
+19:30:18 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:18 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:30:18 INFO  [apscheduler.scheduler] Scheduler started
+19:30:18 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:30:18 INFO  [server] 价格提醒调度器已启动
+19:30:18 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:18 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:18 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:18 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:30:18 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:30:18 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:30:18 INFO  [apscheduler.scheduler] Scheduler started
+19:30:18 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:30:18 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/collectors/events_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:30:29 INFO  [src.core.scheduler] 调度器已关闭
+19:30:29 INFO  [server] Agent 调度器已关闭
+19:30:29 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:30:29 INFO  [server] 价格提醒调度器已关闭
+19:30:29 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:30:29 INFO  [server] 上下文维护调度器已关闭
+19:30:29 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:30:29 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:30:29 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [330175]
+INFO:     Started server process [330836]
+INFO:     Waiting for application startup.
+19:30:30 INFO  [server] 本地开发环境，使用系统 Playwright
+19:30:30 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:30:30 INFO  [server] 策略目录初始化完成
+19:30:30 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:30 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:30:30 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:30:30 INFO  [apscheduler.scheduler] Scheduler started
+19:30:30 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:30:30 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:30:30 INFO  [server] Agent 调度器已启动
+19:30:30 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:30 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:30:30 INFO  [apscheduler.scheduler] Scheduler started
+19:30:30 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:30:30 INFO  [server] 价格提醒调度器已启动
+19:30:30 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:30 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:30 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:30:30 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:30:30 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:30:30 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:30:30 INFO  [apscheduler.scheduler] Scheduler started
+19:30:30 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:30:30 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:30:45 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:30:45 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:30:45 CST], next run at: 2026-02-26 19:30:45 CST)" (scheduled at 2026-02-26 19:30:45.344889+08:00)
+19:30:45 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:30:45 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:30:45 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:30:45 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:30:45 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:30:45 CST], next run at: 2026-02-26 19:30:45 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/collectors/events_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:31:12 INFO  [src.core.scheduler] 调度器已关闭
+19:31:12 INFO  [server] Agent 调度器已关闭
+19:31:12 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:31:12 INFO  [server] 价格提醒调度器已关闭
+19:31:12 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:31:12 INFO  [server] 上下文维护调度器已关闭
+19:31:12 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:31:12 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:31:12 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [330836]
+INFO:     Started server process [331980]
+INFO:     Waiting for application startup.
+19:31:13 INFO  [server] 本地开发环境，使用系统 Playwright
+19:31:13 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:31:13 INFO  [server] 策略目录初始化完成
+19:31:13 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:31:13 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:31:13 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:31:13 INFO  [apscheduler.scheduler] Scheduler started
+19:31:13 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:31:13 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:31:13 INFO  [server] Agent 调度器已启动
+19:31:13 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:31:13 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:31:13 INFO  [apscheduler.scheduler] Scheduler started
+19:31:13 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:31:13 INFO  [server] 价格提醒调度器已启动
+19:31:13 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:31:13 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:31:13 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:31:13 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:31:13 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:31:13 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:31:13 INFO  [apscheduler.scheduler] Scheduler started
+19:31:13 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:31:13 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:31:28 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:31:28 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:31:28 CST], next run at: 2026-02-26 19:31:28 CST)" (scheduled at 2026-02-26 19:31:28.334655+08:00)
+19:31:28 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:31:28 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:31:28 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:31:28 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:31:28 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:31:28 CST], next run at: 2026-02-26 19:31:28 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/collectors/events_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:32:02 INFO  [src.core.scheduler] 调度器已关闭
+19:32:02 INFO  [server] Agent 调度器已关闭
+19:32:02 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:32:02 INFO  [server] 价格提醒调度器已关闭
+19:32:02 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:32:02 INFO  [server] 上下文维护调度器已关闭
+19:32:02 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:32:02 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:32:02 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [331980]
+INFO:     Started server process [333515]
+INFO:     Waiting for application startup.
+19:32:03 INFO  [server] 本地开发环境，使用系统 Playwright
+19:32:03 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:32:03 INFO  [server] 策略目录初始化完成
+19:32:03 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:03 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:32:03 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:32:03 INFO  [apscheduler.scheduler] Scheduler started
+19:32:03 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:32:03 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:32:03 INFO  [server] Agent 调度器已启动
+19:32:03 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:03 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:32:03 INFO  [apscheduler.scheduler] Scheduler started
+19:32:03 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:32:03 INFO  [server] 价格提醒调度器已启动
+19:32:03 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:03 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:03 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:03 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:32:03 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:32:03 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:32:03 INFO  [apscheduler.scheduler] Scheduler started
+19:32:03 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:32:03 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:32:18 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:32:18 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:32:18 CST], next run at: 2026-02-26 19:32:18 CST)" (scheduled at 2026-02-26 19:32:18.989073+08:00)
+19:32:18 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:32:18 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:32:19 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:32:19 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:32:19 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:32:18 CST], next run at: 2026-02-26 19:32:18 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/collectors/news_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:32:58 INFO  [src.core.scheduler] 调度器已关闭
+19:32:58 INFO  [server] Agent 调度器已关闭
+19:32:58 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:32:58 INFO  [server] 价格提醒调度器已关闭
+19:32:58 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:32:58 INFO  [server] 上下文维护调度器已关闭
+19:32:58 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:32:58 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:32:58 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [333515]
+INFO:     Started server process [335271]
+INFO:     Waiting for application startup.
+19:32:59 INFO  [server] 本地开发环境，使用系统 Playwright
+19:32:59 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:32:59 INFO  [server] 策略目录初始化完成
+19:32:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:59 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:32:59 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:32:59 INFO  [apscheduler.scheduler] Scheduler started
+19:32:59 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:32:59 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:32:59 INFO  [server] Agent 调度器已启动
+19:32:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:59 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:32:59 INFO  [apscheduler.scheduler] Scheduler started
+19:32:59 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:32:59 INFO  [server] 价格提醒调度器已启动
+19:32:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:59 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:32:59 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:32:59 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:32:59 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:32:59 INFO  [apscheduler.scheduler] Scheduler started
+19:32:59 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:32:59 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:33:14 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:33:14 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:33:14 CST], next run at: 2026-02-26 19:33:14 CST)" (scheduled at 2026-02-26 19:33:14.376447+08:00)
+19:33:14 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:33:14 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:33:14 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:33:14 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:33:14 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:33:14 CST], next run at: 2026-02-26 19:33:14 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/collectors/news_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:33:31 INFO  [src.core.scheduler] 调度器已关闭
+19:33:31 INFO  [server] Agent 调度器已关闭
+19:33:31 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:33:31 INFO  [server] 价格提醒调度器已关闭
+19:33:31 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:33:31 INFO  [server] 上下文维护调度器已关闭
+19:33:31 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:33:31 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:33:31 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [335271]
+INFO:     Started server process [336220]
+INFO:     Waiting for application startup.
+19:33:32 INFO  [server] 本地开发环境，使用系统 Playwright
+19:33:32 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:33:32 INFO  [server] 策略目录初始化完成
+19:33:32 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:32 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:33:32 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:33:32 INFO  [apscheduler.scheduler] Scheduler started
+19:33:32 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:33:32 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:33:32 INFO  [server] Agent 调度器已启动
+19:33:32 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:32 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:33:32 INFO  [apscheduler.scheduler] Scheduler started
+19:33:32 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:33:32 INFO  [server] 价格提醒调度器已启动
+19:33:32 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:32 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:32 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:32 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:33:32 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:33:32 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:33:32 INFO  [apscheduler.scheduler] Scheduler started
+19:33:32 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:33:32 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/collectors/news_collector.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:33:46 INFO  [src.core.scheduler] 调度器已关闭
+19:33:46 INFO  [server] Agent 调度器已关闭
+19:33:46 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:33:46 INFO  [server] 价格提醒调度器已关闭
+19:33:46 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:33:46 INFO  [server] 上下文维护调度器已关闭
+19:33:46 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:33:46 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:33:46 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [336220]
+INFO:     Started server process [336635]
+INFO:     Waiting for application startup.
+19:33:47 INFO  [server] 本地开发环境，使用系统 Playwright
+19:33:47 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:33:47 INFO  [server] 策略目录初始化完成
+19:33:47 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:47 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:33:47 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:33:47 INFO  [apscheduler.scheduler] Scheduler started
+19:33:47 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:33:47 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:33:47 INFO  [server] Agent 调度器已启动
+19:33:47 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:47 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:33:47 INFO  [apscheduler.scheduler] Scheduler started
+19:33:47 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:33:47 INFO  [server] 价格提醒调度器已启动
+19:33:47 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:47 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:47 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:33:47 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:33:47 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:33:47 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:33:47 INFO  [apscheduler.scheduler] Scheduler started
+19:33:47 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:33:47 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:34:02 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:34:02 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:34:02 CST], next run at: 2026-02-26 19:34:02 CST)" (scheduled at 2026-02-26 19:34:02.380473+08:00)
+19:34:02 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:02 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:02 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:02 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:34:02 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:34:02 CST], next run at: 2026-02-26 19:34:02 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/core/notifier.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:34:05 INFO  [src.core.scheduler] 调度器已关闭
+19:34:05 INFO  [server] Agent 调度器已关闭
+19:34:05 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:34:05 INFO  [server] 价格提醒调度器已关闭
+19:34:05 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:34:05 INFO  [server] 上下文维护调度器已关闭
+19:34:05 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:34:05 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:34:05 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [336635]
+INFO:     Started server process [337094]
+INFO:     Waiting for application startup.
+19:34:06 INFO  [server] 本地开发环境，使用系统 Playwright
+19:34:06 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:34:06 INFO  [server] 策略目录初始化完成
+19:34:06 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:06 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:34:06 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:34:06 INFO  [apscheduler.scheduler] Scheduler started
+19:34:06 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:34:06 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:34:06 INFO  [server] Agent 调度器已启动
+19:34:06 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:06 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:34:06 INFO  [apscheduler.scheduler] Scheduler started
+19:34:06 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:34:06 INFO  [server] 价格提醒调度器已启动
+19:34:06 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:06 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:06 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:06 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:34:06 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:34:06 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:34:06 INFO  [apscheduler.scheduler] Scheduler started
+19:34:06 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:34:06 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:34:21 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:34:21 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:34:21 CST], next run at: 2026-02-26 19:34:21 CST)" (scheduled at 2026-02-26 19:34:21.697443+08:00)
+19:34:21 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:21 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:21 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:21 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:34:21 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:34:21 CST], next run at: 2026-02-26 19:34:21 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/core/ai_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:34:26 INFO  [src.core.scheduler] 调度器已关闭
+19:34:26 INFO  [server] Agent 调度器已关闭
+19:34:26 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:34:26 INFO  [server] 价格提醒调度器已关闭
+19:34:26 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:34:26 INFO  [server] 上下文维护调度器已关闭
+19:34:26 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:34:26 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:34:26 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [337094]
+INFO:     Started server process [337574]
+INFO:     Waiting for application startup.
+19:34:27 INFO  [server] 本地开发环境，使用系统 Playwright
+19:34:28 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:34:28 INFO  [server] 策略目录初始化完成
+19:34:28 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:28 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:34:28 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:34:28 INFO  [apscheduler.scheduler] Scheduler started
+19:34:28 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:34:28 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:34:28 INFO  [server] Agent 调度器已启动
+19:34:28 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:28 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:34:28 INFO  [apscheduler.scheduler] Scheduler started
+19:34:28 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:34:28 INFO  [server] 价格提醒调度器已启动
+19:34:28 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:28 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:28 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:34:28 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:34:28 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:34:28 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:34:28 INFO  [apscheduler.scheduler] Scheduler started
+19:34:28 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:34:28 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:34:43 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:34:43 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:34:43 CST], next run at: 2026-02-26 19:34:43 CST)" (scheduled at 2026-02-26 19:34:43.033286+08:00)
+19:34:43 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:43 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:43 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:34:43 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:34:43 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:34:43 CST], next run at: 2026-02-26 19:34:43 CST)" executed successfully
+WARNING:  StatReload detected changes in 'src/core/ai_client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:35:03 INFO  [src.core.scheduler] 调度器已关闭
+19:35:03 INFO  [server] Agent 调度器已关闭
+19:35:03 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:35:03 INFO  [server] 价格提醒调度器已关闭
+19:35:03 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:35:03 INFO  [server] 上下文维护调度器已关闭
+19:35:03 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:35:03 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:35:03 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [337574]
+INFO:     Started server process [338445]
+INFO:     Waiting for application startup.
+19:35:05 INFO  [server] 本地开发环境，使用系统 Playwright
+19:35:05 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:35:05 INFO  [server] 策略目录初始化完成
+19:35:05 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:05 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:35:05 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:35:05 INFO  [apscheduler.scheduler] Scheduler started
+19:35:05 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:35:05 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:35:05 INFO  [server] Agent 调度器已启动
+19:35:05 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:05 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:35:05 INFO  [apscheduler.scheduler] Scheduler started
+19:35:05 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:35:05 INFO  [server] 价格提醒调度器已启动
+19:35:05 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:05 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:05 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:05 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:35:05 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:35:05 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:35:05 INFO  [apscheduler.scheduler] Scheduler started
+19:35:05 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:35:05 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'src/web/api/providers.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+19:35:19 INFO  [src.core.scheduler] 调度器已关闭
+19:35:19 INFO  [server] Agent 调度器已关闭
+19:35:19 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已关闭
+19:35:19 INFO  [server] 价格提醒调度器已关闭
+19:35:19 INFO  [src.core.context_scheduler] 上下文维护调度器已关闭
+19:35:19 INFO  [server] 上下文维护调度器已关闭
+19:35:19 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:35:19 INFO  [apscheduler.scheduler] Scheduler has been shut down
+19:35:19 INFO  [apscheduler.scheduler] Scheduler has been shut down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [338445]
+INFO:     Started server process [338862]
+INFO:     Waiting for application startup.
+19:35:20 INFO  [server] 本地开发环境，使用系统 Playwright
+19:35:21 INFO  [server] 已从环境变量同步 AI 配置: services=3 models=6 bindings=5
+19:35:21 INFO  [server] 策略目录初始化完成
+19:35:21 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:21 INFO  [src.core.scheduler] 注册 Agent: 收盘复盘 (schedule: 30 15 * * 1-5)
+19:35:21 INFO  [apscheduler.scheduler] Added job "收盘复盘" to job store "default"
+19:35:21 INFO  [apscheduler.scheduler] Scheduler started
+19:35:21 INFO  [src.core.scheduler] 调度器已启动，已注册 1 个 Agent
+19:35:21 INFO  [src.core.scheduler]   - 收盘复盘: 下次执行 2026-02-27 15:30:00+08:00
+19:35:21 INFO  [server] Agent 调度器已启动
+19:35:21 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:21 INFO  [apscheduler.scheduler] Added job "PriceAlertScheduler._scan_job" to job store "default"
+19:35:21 INFO  [apscheduler.scheduler] Scheduler started
+19:35:21 INFO  [src.core.price_alert_scheduler] 价格提醒调度器已启动，扫描间隔 60s
+19:35:21 INFO  [server] 价格提醒调度器已启动
+19:35:21 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:21 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:21 INFO  [apscheduler.scheduler] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+19:35:21 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:35:21 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._cleanup_job" to job store "default"
+19:35:21 INFO  [apscheduler.scheduler] Added job "ContextMaintenanceScheduler._evaluate_job" to job store "default"
+19:35:21 INFO  [apscheduler.scheduler] Scheduler started
+19:35:21 INFO  [src.core.context_scheduler] 上下文维护调度器已启动（后验评估间隔 6h，启动补跑 +15s，快照保留 180 天，后验保留 365 天）
+19:35:21 INFO  [server] 上下文维护调度器已启动
+INFO:     Application startup complete.
+19:35:36 INFO  [apscheduler.scheduler] Removed job context_maintenance_bootstrap_evaluate
+19:35:36 INFO  [apscheduler.executors.default] Running job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:35:36 CST], next run at: 2026-02-26 19:35:36 CST)" (scheduled at 2026-02-26 19:35:36.082089+08:00)
+19:35:36 INFO  [src.core.context_scheduler] [上下文维护] 后验评估完成: pending=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:35:36 INFO  [src.core.context_scheduler] [上下文维护] 候选后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:35:36 INFO  [src.core.context_scheduler] [上下文维护] 策略后验评估完成: total=0 eligible=0 evaluated=0 skipped_not_due=0 skipped_no_price=0
+19:35:36 INFO  [src.core.context_scheduler] [上下文维护] 策略调权完成: changed=0 checked=28 skipped_low_sample=28
+19:35:36 INFO  [apscheduler.executors.default] Job "ContextMaintenanceScheduler._evaluate_job (trigger: date[2026-02-26 19:35:36 CST], next run at: 2026-02-26 19:35:36 CST)" executed successfully
+INFO:     127.0.0.1:58344 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58360 - "GET /api/version HTTP/1.1" 200 OK
+19:35:48 INFO  [httpx] HTTP Request: GET http://qt.gtimg.cn/q=sh000001,sz399001,sz399006,hkHSI,usIXIC,usDJI "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:58362 - "GET /api/market/indices HTTP/1.1" 200 OK
+19:36:21 INFO  [apscheduler.executors.default] Running job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:37:21 CST)" (scheduled at 2026-02-26 19:36:21.080649+08:00)
+19:36:21 INFO  [src.core.price_alert_scheduler] [价格提醒] 扫描完成: rules=0 triggered=0 skipped=0
+19:36:21 INFO  [apscheduler.executors.default] Job "PriceAlertScheduler._scan_job (trigger: interval[0:01:00], next run at: 2026-02-26 19:37:21 CST)" executed successfully

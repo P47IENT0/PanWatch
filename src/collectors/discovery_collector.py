@@ -208,13 +208,12 @@ class EastMoneyDiscoveryCollector:
                 timeout = httpx.Timeout(
                     self.timeout_s, connect=min(self.timeout_s, 6.0)
                 )
-                async with httpx.AsyncClient(
+                async with async_client(
                     timeout=timeout,
                     verify=self.verify_ssl,
                     follow_redirects=True,
-                    trust_env=True,
                     headers=headers,
-                    proxy=self.proxy,
+                    proxy=resolve_proxy(self.proxy),
                 ) as client:
                     resp = await client.get(url, params=params)
                     resp.raise_for_status()
@@ -235,3 +234,4 @@ class EastMoneyDiscoveryCollector:
                 f"EastMoney discovery request failed: {type(last_exc).__name__}: {last_exc!r}"
             )
         return {}
+from src.core.http_client import async_client, resolve_proxy

@@ -10,6 +10,7 @@ import httpx
 import time
 
 from src.core.cn_symbol import get_cn_prefix, is_cn_sh
+from src.core.http_client import sync_client
 from src.models.market import MarketCode
 
 logger = logging.getLogger(__name__)
@@ -51,7 +52,7 @@ def _fetch_stooq_us_klines(symbol: str) -> list[KlineData]:
     for attempt in range(3):
         try:
             timeout = 12 + attempt * 6
-            with httpx.Client(
+            with sync_client(
                 follow_redirects=True, timeout=timeout, headers=headers
             ) as client:
                 resp = client.get(url, params=params)
@@ -151,7 +152,7 @@ def _fetch_eastmoney_klines(
     best: list[KlineData] = []
     for attempt in range(2):
         try:
-            with httpx.Client(
+            with sync_client(
                 follow_redirects=True,
                 timeout=12 + attempt * 6,
                 headers=headers,
@@ -492,7 +493,7 @@ class KlineCollector:
         }
 
         try:
-            with httpx.Client(follow_redirects=True, timeout=10) as client:
+            with sync_client(follow_redirects=True, timeout=10) as client:
                 resp = client.get(TENCENT_KLINE_URL, params=params)
                 text = resp.text
 

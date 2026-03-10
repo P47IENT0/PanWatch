@@ -26,6 +26,8 @@ from src.core.notifier import NotifierManager
 from src.core.scheduler import AgentScheduler
 from src.core.price_alert_scheduler import PriceAlertScheduler
 from src.core.context_scheduler import ContextMaintenanceScheduler
+from src.core.trading_gateway_scheduler import build_trading_gateway_scheduler, TradingGatewayScheduler
+from src.core.ai_env_sync import sync_ai_from_env
 from src.core.agent_runs import record_agent_run
 from src.core.log_context import install_log_record_factory, log_context
 from src.core.agent_catalog import (
@@ -46,6 +48,7 @@ logger = logging.getLogger(__name__)
 scheduler: AgentScheduler | None = None
 price_alert_scheduler: PriceAlertScheduler | None = None
 context_maintenance_scheduler: ContextMaintenanceScheduler | None = None
+trading_gateway_scheduler: TradingGatewayScheduler | None = None
 
 
 def setup_ssl():
@@ -1086,6 +1089,21 @@ async def lifespan(app):
         db.close()
 
     seed_agents()
+    db = SessionLocal()
+    try:
+        sync_result = sync_ai_from_env(db)
+        if any(sync_result.values()):
+            logger.info(
+                "已从环境变量同步 AI 配置: services=%s models=%s bindings=%s",
+                sync_result["services_upserted"],
+                sync_result["models_upserted"],
+                sync_result["agent_bindings_updated"],
+            )
+    except Exception as e:
+        logger.error(f"环境变量同步 AI 配置失败: {e}")
+    finally:
+        db.close()
+
     seed_data_sources()
     seed_strategies()
     seed_sample_stocks()
@@ -1102,7 +1120,7 @@ async def lifespan(app):
 
     threading.Thread(target=refresh_stock_cache, daemon=True).start()
 
-    global scheduler, price_alert_scheduler, context_maintenance_scheduler
+    global scheduler, price_alert_scheduler, context_maintenance_scheduler, trading_gateway_scheduler
     scheduler = build_scheduler()
     scheduler.start()
     logger.info("Agent 调度器已启动")
@@ -1128,6 +1146,13 @@ async def lifespan(app):
         logger.info("上下文维护调度器已启动")
     except Exception as e:
         logger.error(f"上下文维护调度器启动失败: {e}")
+
+    try:
+        trading_gateway_scheduler = build_trading_gateway_scheduler()
+        trading_gateway_scheduler.start()
+        logger.info("交易网关同步调度器已启动")
+    except Exception as e:
+        logger.error(f"交易网关同步调度器启动失败: {e}")
     yield
     if scheduler:
         scheduler.shutdown()
@@ -1138,6 +1163,9 @@ async def lifespan(app):
     if context_maintenance_scheduler:
         context_maintenance_scheduler.shutdown()
         logger.info("上下文维护调度器已关闭")
+    if trading_gateway_scheduler:
+        trading_gateway_scheduler.shutdown()
+        logger.info("交易网关同步调度器已关闭")
 
 
 # 模块级 app 实例，供 uvicorn reload 使用

@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     # 代理
     http_proxy: str = ""
 
+    trading_gateway_url: str = ""
+    trading_gateway_api_key: str = ""
+    trading_sync_interval_seconds: int = 30
+
     # 通知策略（可通过 UI 的“系统设置”覆盖）
     # 静默时间段（本地时区），格式: HH:MM-HH:MM，空为关闭；跨夜示例: 23:00-07:00
     notify_quiet_hours: str = ""
@@ -48,7 +52,11 @@ class Settings(BaseSettings):
         validation_alias=AliasChoices("TZ", "APP_TIMEZONE"),
     )
 
-    model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
+    model_config = {
+        "env_file": ".env",
+        "env_file_encoding": "utf-8",
+        "extra": "ignore",
+    }
 
 
 @dataclass

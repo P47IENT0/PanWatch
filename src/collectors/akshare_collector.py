@@ -3,7 +3,7 @@ import logging
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-import httpx
+from src.core.http_client import sync_client
 
 from src.core.cn_symbol import get_cn_prefix
 from src.models.market import MarketCode, StockData, IndexData
@@ -130,7 +130,7 @@ def _fetch_tencent_quotes(symbols: list[str]) -> list[dict]:
     if not symbols:
         return []
     url = TENCENT_QUOTE_URL + ",".join(symbols)
-    with httpx.Client() as client:
+    with sync_client() as client:
         resp = client.get(url, timeout=10)
         content = resp.content.decode("gbk", errors="ignore")
 

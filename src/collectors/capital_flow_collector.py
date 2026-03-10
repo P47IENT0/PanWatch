@@ -2,7 +2,7 @@
 import logging
 from dataclasses import dataclass
 
-import httpx
+from src.core.http_client import sync_client
 
 from src.core.cn_symbol import is_cn_sh
 from src.models.market import MarketCode
@@ -63,7 +63,7 @@ class CapitalFlowCollector:
         }
 
         try:
-            with httpx.Client(follow_redirects=True, timeout=8) as client:
+            with sync_client(follow_redirects=True, timeout=8) as client:
                 resp = client.get(EASTMONEY_FLOW_URL, params=params, headers=headers)
                 data = resp.json()
 

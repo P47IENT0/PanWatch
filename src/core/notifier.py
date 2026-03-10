@@ -134,6 +134,7 @@ def build_apprise_url(channel_type: str, config: dict) -> str | None:
             raise ValueError("Telegram 需要 bot_token 和 chat_id")
         # 如果配置了代理（渠道级或全局），返回 None，使用自定义方式发送
         proxy = config.get("proxy", "").strip() or get_global_proxy()
+        proxy = resolve_proxy(proxy)
         if proxy:
             return None
         return f"tgram://{bot_token}/{chat_id}"
@@ -383,7 +384,9 @@ class NotifierManager:
             logger.debug(f"Telegram 使用代理: {proxy}")
 
         try:
-            async with httpx.AsyncClient(transport=transport, timeout=30) as client:
+            async with httpx.AsyncClient(
+                transport=transport, timeout=30, trust_env=False
+            ) as client:
                 resp = await client.post(url, json=payload)
                 data = resp.json()
                 if not data.get("ok"):
@@ -415,7 +418,7 @@ class NotifierManager:
         text = f"## {title}\n\n{content}" if title else content
         payload = {"msgtype": "markdown", "markdown": {"content": text}}
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(trust_env=False) as client:
             resp = await client.post(url, json=payload, timeout=30)
             data = resp.json()
             if data.get("errcode") != 0:
@@ -431,7 +434,7 @@ class NotifierManager:
         url = f"https://sctapi.ftqq.com/{sendkey}.send"
         payload = {"title": title or "通知", "desp": content}
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(trust_env=False) as client:
             resp = await client.post(url, json=payload, timeout=30)
             data = resp.json()
             if data.get("code") != 0:
@@ -455,9 +458,10 @@ class NotifierManager:
         if topic:
             payload["topic"] = topic
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(trust_env=False) as client:
             resp = await client.post(url, json=payload, timeout=30)
             data = resp.json()
             if data.get("code") != 200:
                 raise RuntimeError(f"PushPlus 发送失败: {data.get('msg')}")
             logger.info(f"PushPlus 通知发送成功: {title}")
+from src.core.http_client import resolve_proxy
