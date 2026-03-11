@@ -35,16 +35,18 @@ export interface TriggerStockAgentOptions {
   bypass_throttle?: boolean
   bypass_market_hours?: boolean
   allow_unbound?: boolean
+  wait?: boolean
   symbol?: string
   market?: string
   name?: string
 }
 
 export interface TriggerStockAgentResponse {
-  result: Record<string, any>
-  code: number
-  success: boolean
+  result?: Record<string, any>
+  code?: number
+  success?: boolean
   message: string
+  queued?: boolean
 }
 
 function withQuery(path: string, params: TriggerStockAgentOptions): string {
@@ -75,6 +77,6 @@ export const stocksApi = {
   triggerAgent: (id: number, agentName: string, options: TriggerStockAgentOptions = {}) =>
     fetchAPI<TriggerStockAgentResponse>(
       withQuery(`/stocks/${id}/agents/${encodeURIComponent(agentName)}/trigger`, options),
-      { method: 'POST' }
+      { method: 'POST', timeoutMs: 120_000 }
     ),
 }

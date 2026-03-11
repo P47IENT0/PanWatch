@@ -1,4 +1,6 @@
+import asyncio
 import logging
+import threading
 from types import SimpleNamespace
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -338,6 +340,7 @@ async def trigger_stock_agent(
     bypass_throttle: bool = False,
     bypass_market_hours: bool = False,
     allow_unbound: bool = False,
+    wait: bool = False,
     symbol: str = Query(""),
     market: str = Query("CN"),
     name: str = Query(""),
@@ -348,6 +351,7 @@ async def trigger_stock_agent(
     - 正常模式：传有效 stock_id
     - 无绑定模式：stock_id<=0 且传 symbol/market（需 allow_unbound=true）
     - 无绑定模式默认禁用通知（仅生成建议）
+    - 默认异步执行（立即返回），传 wait=true 可同步等待结果
     """
     sa = None
     trigger_stock = None
@@ -403,6 +407,34 @@ async def trigger_stock_agent(
     )
 
     from server import trigger_agent_for_stock
+
+    if not wait:
+        # 异步模式：后台执行，立即返回
+        sa_id = sa.id if sa else None
+
+        def _runner():
+            try:
+                asyncio.run(trigger_agent_for_stock(
+                    agent_name,
+                    trigger_stock,
+                    stock_agent_id=sa_id,
+                    bypass_throttle=bypass_throttle,
+                    bypass_market_hours=bypass_market_hours,
+                    suppress_notify=suppress_notify,
+                ))
+                logger.info(f"Agent {agent_name} 后台执行完成 - {trigger_stock.symbol}")
+            except Exception:
+                logger.exception(f"Agent {agent_name} 后台执行失败 - {trigger_stock.symbol}")
+
+        t = threading.Thread(
+            target=_runner,
+            name=f"stock-trigger-{agent_name}-{trigger_stock.symbol}",
+            daemon=True,
+        )
+        t.start()
+        return {"queued": True, "message": "已提交后台执行"}
+
+    # 同步模式：等待结果返回
     try:
         result = await trigger_agent_for_stock(
             agent_name,
